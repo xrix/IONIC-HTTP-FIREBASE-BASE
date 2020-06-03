@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TabsService } from './_service/tabs.service';
@@ -15,15 +15,18 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private tabs: TabsService
+    private tabs: TabsService,
+    private menu: MenuController,
     ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.statusBar.backgroundColorByName('lightGray');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.menu.enable(true);
     });
   }
 }

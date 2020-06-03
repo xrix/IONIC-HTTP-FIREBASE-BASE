@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { filter } from 'rxjs/operators';
 
 @Injectable({
@@ -13,9 +13,11 @@ export class TabsService {
   routeParamPages: string[] = [
     'partner-detail', 'profile'
   ];
-  constructor(private router: Router, private platform: Platform) {
+  constructor(
+    private router: Router,
+    private menu: MenuController,
+    private platform: Platform) {
     this.platform.ready().then(() => {
-      // console.log('Core service init');
       this.navEvents();
     });
   }
@@ -23,17 +25,22 @@ export class TabsService {
   public hideTabs() {
     const tabBar = document.getElementById('mainTabBar');
     if (tabBar.style.display !== 'none') { tabBar.style.display = 'none'; }
+    this.menu.isEnabled('first').then(v => {
+      if (v) { this.menu.enable(false); }
+    });
   }
 
   public showTabs() {
     const tabBar = document.getElementById('mainTabBar');
     if (tabBar.style.display !== 'flex') { tabBar.style.display = 'flex'; }
+    this.menu.isEnabled('first').then(v => {
+      if (!v) { this.menu.enable(true); }
+    });
   }
 
   // A simple subscription that tells us what page we're currently navigating to.
   private navEvents() {
     this.router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe((e: any) => {
-      // console.log(e);
       this.showHideTabs(e);
     });
   }
