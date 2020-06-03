@@ -1,9 +1,20 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>tabs</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs color="primary">
+  <ion-tab-bar id='mainTabBar' #mainTabBar slot="bottom">
 
-<ion-content>
+    <ion-tab-button tab='login'>
+      <ion-icon name="log-in"></ion-icon>
+      <ion-label> Login </ion-label>
+    </ion-tab-button>
 
-</ion-content>
+    <ion-tab-button tab='login-fire'>
+      <ion-icon name="log-in"></ion-icon>
+      <ion-label> Login Firebase</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab='home'>
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label> Home </ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+</ion-tabs>

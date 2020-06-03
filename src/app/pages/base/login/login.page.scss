@@ -1,0 +1,74 @@
+ion-content.transparent-header{
+    --background: url(../../../../assets/img/blue.jpg) no-repeat center/cover fixed;
+}
+
+// Fullscreen centered image background
+ion-content {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: transparent;
+}
+ion-row {
+    align-items: center;
+    text-align: center;
+}
+@media only screen and (min-width: 768px) {
+    ion-col.col {
+    margin: 0 auto;
+    max-width: 40%;
+    }
+}
+span {
+    color: white;
+    font-size: smaller;
+}
+ion-list {
+    margin: 1.2em;
+    background-color: transparent !important;
+}
+ion-item {
+    border-radius: 6px !important;
+    // padding-left: 10px !important;
+    // margin: 10px;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    opacity: 0.8;
+    font-size: 0.9em;
+    margin-bottom: 0.4em;
+    border-bottom: 4px rgba(245, 80, 85, 0.5);
+    ion-label{
+        // padding: 1.2em;
+        padding: 0px 2px 4px 1px !important;
+    } 
+    ion-input {
+        // padding: 1.2em;
+        padding: 0px 2px 4px 1px !important;
+    }
+}
+.scroll-content {
+    background-image: radial-gradient(center center, ellipse farthest-corner, #ffeda3, #ffc800);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.logo {
+    width: 40%;
+    height: auto;
+    max-width: 6em;
+    margin: 0 auto;
+    padding-top: 52px;
+    padding-bottom: 18px;
+    // for crop botom
+    // border-radius: 30%;
+}
+.no-border {
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+}
+.login-button {
+    width: 96px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    // border: 1px solid #d1d1d1;
+    background-color: #39acdc;
+}

@@ -18,6 +18,28 @@ ion-label {
 ion-input {
   padding: 5px;
 }
+ion-item {
+    border-radius: 6px !important;
+    // padding-left: 10px !important;
+    // margin: 10px;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    opacity: 0.8;
+    font-size: 0.9em;
+    margin-bottom: 0.4em;
+    border-bottom: 4px rgba(245, 80, 85, 0.5);
+    ion-label{
+        // padding: 1.2em;
+        padding: 0px 2px 4px 1px !important;
+    } 
+    ion-input {
+        // padding: 1.2em;
+        padding: 0px 2px 4px 1px !important;
+    }
+}
+ion-list {
+    margin: 1.2em;
+    background-color: transparent !important;
+}
 
 .invalid {
   border-bottom: 1px solid #ff6153;

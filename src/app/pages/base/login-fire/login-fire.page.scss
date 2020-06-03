@@ -1,0 +1,27 @@
+ion-content{
+    --background: url(../../../../assets/img/spark.jpg) no-repeat center/cover fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: transparent;
+}
+@media only screen and (min-width: 768px) {
+    ion-col.col {
+    margin: 0 auto;
+    max-width: 40%;
+    }
+}
+ion-row {
+    align-items: center;
+    text-align: center;
+}
+.logo {
+    width: 40%;
+    height: auto;
+    max-width: 6em;
+    margin: 0 auto;
+    padding-top: 52px;
+    padding-bottom: 18px;
+    // for crop botom
+    // border-radius: 30%;
+}

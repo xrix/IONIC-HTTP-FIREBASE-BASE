@@ -1,9 +1,72 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content fullscreen="true" padding class="transparent-header scroll-content">
+  <div padding>
+    <ion-row>
+      <ion-col>
+        <img class="logo" src="../../../../assets/icon/logo.png" alt="Company logo" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <form #loginForm="ngForm" novalidate>
+          <ion-list class="no-border">
+            <ion-item>
+              <ion-label position="stacked" color="medium">Username</ion-label>
+              <ion-input
+                [(ngModel)]="user.login"
+                name="login"
+                type="text"
+                #login="ngModel"
+                spellcheck="false"
+                autocapitalize="off"
+                required
+              >
+              </ion-input>
+            </ion-item>
 
-<ion-content>
+            <ion-text color="danger">
+              <p
+                [hidden]="login.valid || submitted == false"
+                class="ion-padding-start"
+              >
+                Username is required
+              </p>
+            </ion-text>
+            <ion-item>
+              <ion-label position="stacked" color="medium" >Password</ion-label>
+              <ion-input
+                [(ngModel)]="user.password"
+                name="password"
+                type="password"
+                #password="ngModel"
+                required
+              >
+              </ion-input>
+            </ion-item>
 
+            <ion-text color="danger">
+              <p
+                [hidden]="password.valid || submitted == false"
+                class="ion-padding-start"
+              >
+                Password is required
+              </p>
+            </ion-text>
+          </ion-list>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="onLogin(loginForm)" type="submit" class="login-button">Login</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" fill="clear" routerLink="/tabs/home">
+          Reset App
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

@@ -1,11 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login-fire</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div padding>
+    <ion-row>
+      <ion-col>
+        <img class="logo" src="../../../../assets/icon/logo.png" alt="Company logo" />
+      </ion-col>
+    </ion-row>
+  </div>
   <app-auth-form #loginForm (formSubmitted)="loginUser($event)" [actionButtonText]="'Login'"></app-auth-form>
 
   <ion-button expand="block" fill="clear" routerLink="/signup">
@@ -14,6 +14,10 @@
 
   <ion-button expand="block" fill="clear" routerLink="/reset-password">
     I forgot my password :(
+  </ion-button>
+
+  <ion-button expand="block" fill="clear" routerLink="/tabs/home">
+    Reset App
   </ion-button>
   
 </ion-content>

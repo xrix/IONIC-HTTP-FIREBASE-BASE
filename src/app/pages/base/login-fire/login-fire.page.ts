@@ -11,8 +11,7 @@ import { IFireUserCredential } from 'src/app/_interface/ifire-user-credential';
 })
 export class LoginFirePage implements OnInit {
   @ViewChild(AuthFormComponent) loginForm: AuthFormComponent;
-  // login: UserCredential; // = { email: '', password: '' };
-  // submitted = false;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
@@ -25,19 +24,12 @@ export class LoginFirePage implements OnInit {
       );
       this.authService.userId = userCredential.user.uid;
       await this.loginForm.hideLoading();
-      this.router.navigateByUrl('home');
+      console.log('Credential.user', userCredential.user);
+      this.router.navigateByUrl('/tabs/home');
     } catch (error) {
       await this.loginForm.hideLoading();
       this.loginForm.handleError(error);
     }
   }
 
-  // onLogin(form: NgForm) {
-  //   this.submitted = true;
-
-  //   if (form.valid) {
-  //     this.userData.login(this.login.email);
-  //     this.router.navigateByUrl('/home');
-  //   }
-  // }
 }
