@@ -3,6 +3,7 @@ import { AuthFormComponent } from '../../components/auth-form/auth-form.componen
 import { AuthService } from 'src/app/_service/auth.service';
 import { Router } from '@angular/router';
 import { IFireUserCredential } from 'src/app/_interface/ifire-user-credential';
+import { User } from 'src/app/_model/model.user';
 
 @Component({
   selector: 'app-login-fire',
@@ -12,7 +13,9 @@ import { IFireUserCredential } from 'src/app/_interface/ifire-user-credential';
 export class LoginFirePage implements OnInit {
   @ViewChild(AuthFormComponent) loginForm: AuthFormComponent;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router) {}
 
   ngOnInit() {}
 
@@ -24,7 +27,7 @@ export class LoginFirePage implements OnInit {
       );
       this.authService.userId = userCredential.user.uid;
       await this.loginForm.hideLoading();
-      console.log('Credential.user', userCredential.user);
+      console.log('userCredential', userCredential);
       this.router.navigateByUrl('/tabs/home');
     } catch (error) {
       await this.loginForm.hideLoading();

@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
 import { first } from 'rxjs/operators';
+import { User } from '../_model/model.user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class AuthService {
   public userId: string;
   constructor(
     private afAuth: AngularFireAuth,
+    private user: User,
     private firestore: AngularFirestore
   ) {}
 
@@ -22,7 +24,12 @@ export class AuthService {
     email: string,
     password: string
   ): Promise<firebase.auth.UserCredential> {
-    return this.afAuth.signInWithEmailAndPassword(email, password);
+    return this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then(res => {
+        this.user.set(res.user, 'fireUser');
+        return res;
+      });
   }
 
   async signup(
@@ -48,6 +55,7 @@ export class AuthService {
   }
 
   logout(): Promise<void> {
+    this.user.logout();
     return this.afAuth.signOut();
   }
 

@@ -5,10 +5,12 @@
       authForm.controls['email'].touched">
     </ion-input>
   </ion-item>
-  <ion-item class="error-message" *ngIf="!authForm.controls['email'].valid &&
-       authForm.controls['email'].touched">
-    <ion-label>Please enter a valid email address.</ion-label>
-  </ion-item>
+  <ion-text color="danger">  
+    <p *ngIf="!authForm.controls['email'].valid &&
+         authForm.controls['email'].touched">
+      <ion-label>Please enter a valid email address.</ion-label>
+    </p>
+  </ion-text>
 
   <ion-item *ngIf="!isPasswordResetPage">
     <ion-label position="stacked">Password</ion-label>
@@ -16,10 +18,12 @@
       [class.invalid]="!authForm.controls['password'].valid&& authForm.controls['password'].touched">
     </ion-input>
   </ion-item>
-  <ion-item class="error-message" *ngIf="!authForm.controls['password'].valid
-      && authForm.controls['password'].touched && !isPasswordResetPage">
-    <ion-label>Your password needs more than 6 characters.</ion-label>
-  </ion-item>
+  <ion-text color="danger">  
+      <p *ngIf="!authForm.controls['password'].valid
+        && authForm.controls['password'].touched && !isPasswordResetPage">
+      <ion-label>Your password needs more than 6 characters.</ion-label>
+    </p>
+  </ion-text>
 
   <ion-button (click)="submitCredentials(authForm)" [disabled]="!authForm.valid">
     {{ actionButtonText }}

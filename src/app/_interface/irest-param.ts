@@ -7,4 +7,6 @@ export interface IRestParam {
     offset?: number | 'none';
     order?: string;
     action?: string;
+    data?: object;
+    [key: string]: any;
 }

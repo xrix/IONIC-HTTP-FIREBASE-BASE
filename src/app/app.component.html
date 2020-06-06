@@ -9,24 +9,6 @@
           </ion-list-header>
 
           <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/tabs/login" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="person"></ion-icon>
-              <ion-label>
-                Login
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/tabs/login-fire" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="person"></ion-icon>
-              <ion-label>
-                Login Fire
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle autoHide="false">
             <ion-item routerLink="/tabs/home" routerLinkActive="active" routerDirection="root" detail="false">
               <ion-icon slot="start" name="home-outline"></ion-icon>
               <ion-label>
@@ -36,8 +18,26 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle autoHide="false">
-            <ion-item button  detail="false">
-              <ion-icon slot="start" name="log-out"></ion-icon>
+            <ion-item routerLink="/tabs/login" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="log-in-outline"></ion-icon>
+              <ion-label>
+                Login * (to remove)
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/tabs/login-fire" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="log-in-outline"></ion-icon>
+              <ion-label>
+                Login Fire * (to remove)
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item button (click)="logout()" detail="false">
+              <ion-icon slot="start" name="log-out-outline"></ion-icon>
               <ion-label>
                 Sign Out
               </ion-label>

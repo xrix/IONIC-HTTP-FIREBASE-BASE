@@ -18,7 +18,16 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        loadChildren: () => import('../../addons/home/home.module').then(m => m.HomePageModule)
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+          },
+          {
+            path: 'profile',
+            loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
+          }
+        ]
       },
     ]
   },

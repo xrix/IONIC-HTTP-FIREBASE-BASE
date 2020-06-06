@@ -5,6 +5,8 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { OdooService } from 'src/app/_service/odoo.service';
 import { NgForm } from '@angular/forms';
 import { IOdooHttpResponse } from 'src/app/_interface/iodoo-http-response';
+import { User } from 'src/app/_model/model.user';
+import { IUserRestData } from 'src/app/_interface/iuser-rest-data';
 
 @Component({
   selector: 'app-login',
@@ -15,28 +17,19 @@ export class LoginPage implements OnInit {
   user: IUserCredential = { login: '', password: '' };
   submitted = false;
   loading: HTMLIonLoadingElement;
-  // tabElem: any;
   deviceInfo: any;
 
   constructor(
     // private device: Device,
+    private userMdl: User,
     private router: Router,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private odoo: OdooService) {
-      // this.tabElem = document.getElementById('mainTabBar');
     }
 
   ngOnInit() {
   }
-
-  // ionViewDidEnter() {
-  //  if (this.tabElem.style.display !== 'none') { this.tabElem.style.display = 'none'; }
-  // }
-
-  // ionViewDidLeave() {
-  //  if (this.tabElem.style.display !== 'flex') { this.tabElem.style.display = 'flex'; }
-  // }
 
   async onLogin(form: NgForm) {
     this.submitted = true;
@@ -52,7 +45,7 @@ export class LoginPage implements OnInit {
         await this.hideLoading();
         await this.handleLog(result);
         if (result.status === 200) {
-          this.router.navigateByUrl('/tabs/home', {replaceUrl: true});
+          this.router.navigateByUrl('', {replaceUrl: true});
         }
       } catch (error) {
         result = error;
@@ -87,12 +80,28 @@ export class LoginPage implements OnInit {
     let msg = '';
     let header = '';
     let subHeader = '';
+    let alert;
     const status = result.status;
     if (status === 200) {
       header = 'Hi, ' + JSON.parse(result.data).username;
       subHeader = 'You have successfully login';
       msg = 'Lets continue..';
+      this.userMdl.set(JSON.parse(result.data) as IUserRestData );
+      alert = await this.alertCtrl.create({
+        message: msg,
+        buttons: [{
+          text: 'Ok',
+          handler: () => {
+            this.router.navigateByUrl('', {replaceUrl: true});
+          },
+        }],
+        header,
+        subHeader,
+      });
     } else if (status === -1) {
+      header = '';
+      msg = 'Cant connect to server! Go get an internet access!';
+    } else if (status === -4) {
       header = 'Ouch!';
       msg = 'No connection to server!';
     } else {
@@ -100,20 +109,7 @@ export class LoginPage implements OnInit {
       msg = 'Incorrect username or password.';
       subHeader = 'Try again..';
     }
-    let alert;
-    if (status === 200) {
-      alert = await this.alertCtrl.create({
-        message: msg,
-        buttons: [{
-          text: 'Ok',
-          handler: () => {
-            this.router.navigateByUrl('/tabs/dashboard', {replaceUrl: true});
-          },
-        }],
-        header,
-        subHeader,
-      });
-    } else {
+    if (status !== 200) {
       alert = await this.alertCtrl.create({
         message: msg,
         buttons: [{ text: 'Ok', role: 'cancel' }],

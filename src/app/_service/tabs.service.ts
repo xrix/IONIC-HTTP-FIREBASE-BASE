@@ -8,7 +8,7 @@ import { filter } from 'rxjs/operators';
 })
 export class TabsService {
   private hideTabBarPages: string[] = [
-    'login', 'login-fire'
+    'login', 'login-fire', 'profile'
   ];
   routeParamPages: string[] = [
     'partner-detail', 'profile'

@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>My Branding</ion-title>
+    <ion-buttons slot="end">
+      <button ion-button color="light" (click)="reload()">Reload</button>
+      <ion-chip color="primary" routerLink='/tabs/home/profile'>
+        <ion-label color="medium">
+          <h3>User</h3>
+        </ion-label>
+        <ion-icon name="person"></ion-icon>
+      </ion-chip>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list lines="true" *ngIf="odooUser">
+    <ion-item-divider> Odoo User </ion-item-divider>
+    <ion-item> 
+      <p><strong>Name: </strong>{{ odooUser.username }}</p>
+    </ion-item>
+    <ion-item> 
+      <p><strong>UID: </strong>{{ odooUser.uid }}</p>
+    </ion-item>
+    <ion-item> 
+      <p><strong>Lang: </strong>{{ odooUser.user_context.lang }}</p>
+    </ion-item>
+  </ion-list>
+  <ion-list lines="true" *ngIf="fireUser">
+    <ion-item-divider > Fire User </ion-item-divider>
+    <ion-item > 
+      <p><strong>Name: </strong>{{ fireUser.displayName }}</p>
+    </ion-item>
+    <ion-item> 
+      <p><strong>UID: </strong>{{ fireUser.uid }}</p>
+    </ion-item>
+    <ion-item> 
+      <p><strong>email: </strong>{{ fireUser.email }}</p>
+    </ion-item>
+    <ion-item> 
+      <p><strong>Phone: </strong>{{ fireUser.phoneNumber }}</p>
+    </ion-item>
+    <ion-item> 
+      <p><strong>Photo URL: </strong>{{ fireUser.photoURL }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <strong>Ready to create an app?</strong> Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a>
+</ion-footer>

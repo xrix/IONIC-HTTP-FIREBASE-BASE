@@ -6,52 +6,53 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class User {
-  private odooData = 'Users';
+  private odooData = 'res.users';
   logedIn = false;
-  uid: number;
-  username: string;
-  user_context: {
-    uid: number;
-    lang: string;
-    tz: string;
-    [key: string]: any;
-  };
-  company_id: number;
-  access_token: string;
-  expires_in: number;
+  // odoouser: {
+  //   uid: number;
+  //   username: string;
+  //   user_context: {
+  //     uid: number;
+  //     lang: string;
+  //     tz: string;
+  //     [key: string]: any;
+  //   };
+  //   company_id: number;
+  //   access_token: string;
+  //   expires_in: number;
+  // };
+  // fireuser: {
+  //   displayName: string;
+  //   email: string;
+  //   emailVerified: string;
+  //   phoneNumber: string;
+  //   photoURL: any;
+  //   refreshToken: string;
+  // };
 
   constructor(
     private storage: Storage,
-    private router: Router
   ) {
     this.isLoggedIn().then(l => this.logedIn = l);
   }
 
   set(value, settingName?: string){
-    const fld = settingName ? `setting:${ settingName }` : this.odooData;
+    const fld = settingName || this.odooData;
+    console.log('user set', fld, value);
     return this.storage.set(fld, value);
   }
   async get(settingName?: string){
-    const fld = settingName ? `setting:${ settingName }` : this.odooData;
+    const fld = settingName || this.odooData;
     return await this.storage.get(fld);
   }
   async remove(settingName?: string){
-    const fld = settingName ? `setting:${ settingName }` : this.odooData;
+    const fld = settingName || this.odooData;
     return await this.storage.remove(fld);
   }
-
   clear() {
     this.storage.clear().then(() => {
       console.log('all keys cleared');
     });
-  }
-
-  setData(v: any) {
-    this.set(v);
-  }
-
-  getData() {
-    return this.get().then(result => result);
   }
 
   getAccess() {
@@ -61,21 +62,11 @@ export class User {
   }
 
   isLoggedIn(): Promise<boolean> {
-    return this.getAccess().then(d => {
-      if (d.access_token !== undefined) {
-        return true;
-      } else {
-        return false;
-      }
-    }).catch(() => false);
+    return this.getAccess().then(d => !!d.access_token);
   }
 
   logout() {
     this.clear();
-  }
-
-  relogin() {
-    this.router.navigateByUrl('/tabs-nav/login', {replaceUrl: true});
   }
 
 }

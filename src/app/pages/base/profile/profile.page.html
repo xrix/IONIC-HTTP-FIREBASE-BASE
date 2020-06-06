@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main-content">
+  <div id="profile-info">
+    <!-- <img src="'data:image/png;base64,'+{{partner?.imageSmall}}"  alt='img2'/> -->
+    <img class="profile-image" src="../../../../assets/icon/logo.png" alt="{{currentUser?.username}}">
+    <h2 class="profile-name">{{currentUser?.username}}</h2>
+  </div>
+  <div *ngIf="partner" id='partner-info' text-wrap text-center>
+    <ion-list no-lines>
+      <ion-item>
+          <ion-icon name="mail" color="primary" item-start></ion-icon>
+          <p *ngIf="partner?.email">{{partner?.email}}</p>
+          <a *ngIf="partner?.email" button slot="end" ion-button href="mailto:{{partner?.email}}" color="primary" item-end medium>Open App</a>
+      </ion-item>
+      <ion-item>
+          <ion-icon item-start name="call" color="danger"></ion-icon>
+          <p *ngIf="partner?.phone">{{partner?.phone}}</p>
+          <a *ngIf="partner?.phone" button slot="end" ion-button href="tel:{{partner?.phone}}" color="danger" item-end medium>Poke me</a>
+      </ion-item>
+      <ion-item>
+          <ion-icon item-start name="logo-whatsapp" color="secondary"></ion-icon>
+          <p *ngIf="partner?.mobile">{{partner?.mobile}}</p>
+          <a *ngIf="partner?.mobile" button slot="end" ion-button color="secondary" item-end medium href="whatsapp://send?text=Hi from ionic&phone=+{{partner?.phone}}&abid=+{{partner?.phone}}">Open App</a>
+      </ion-item>
+      <ion-item>
+          <ion-icon id="mapIcon" item-start name="home-outline" color="twitter"></ion-icon>
+          <div>
+            <span *ngIf="partner?.street">{{partner?.street}}</span>
+            <span *ngIf="partner?.street2">  {{partner?.street2}}</span>
+          </div>
+      </ion-item>
+    </ion-list>
+    <!-- <ion-list>
+      <ion-list-header>
+        Other
+      </ion-list-header>
+      <ion-item>
+        <ion-icon name="refresh-circle-outline"></ion-icon>
+        <ion-button (click)="update()"> Update </ion-button>
+        <ion-button (click)="showUser()"> User </ion-button>
+        <ion-button (click)="showPartner()"> Partner </ion-button>
+      </ion-item>
+    </ion-list> -->
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer">
+    <div (click)="logout()">
+      <ion-icon name='power'></ion-icon>
+      <span> <strong>Sign out</strong></span>
+    </div>
+  </ion-toolbar>
+</ion-footer>

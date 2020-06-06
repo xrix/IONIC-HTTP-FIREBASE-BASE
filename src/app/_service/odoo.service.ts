@@ -23,7 +23,7 @@ export class OdooService {
   constructor(
     private user: User,
     private http: HTTP) {
-      this.config = environment.odooDev;
+      this.config = environment.odooProd;
     }
 
   async login(usr: IUserCredential): Promise<IOdooHttpResponse> {
@@ -46,7 +46,7 @@ export class OdooService {
         result = error;
       });
     if (result.status === 200) {
-      this.user.setData(JSON.parse(result.data));
+      this.user.set(JSON.parse(result.data));
     }
     return result;
   }
@@ -114,13 +114,43 @@ export class OdooService {
   async patch(params: IRestParam): Promise<IOdooHttpResponse> {
     const headers = await this.getHeaders();
     const path = this.config.api + params.model + '/' + params.id;
-    const bodies = {
+    const body = {
       model: params.model,
       id: params.id,
       action: params.action
     };
     let result: IOdooHttpResponse;
-    await this.http.patch(path, bodies, headers)
+    await this.http.patch(path, body, headers)
+      .then(v => {
+        result = v;
+      })
+      .catch(error => {
+        result = error;
+      });
+    return result;
+  }
+
+  async put(params: IRestParam): Promise<IOdooHttpResponse> {
+    const headers = await this.getHeaders();
+    const path = this.config.api + params.model + '/' + params.id;
+    const body = params.data || {};
+    let result: IOdooHttpResponse;
+    await this.http.put(path, body, headers)
+      .then(v => {
+        result = v;
+      })
+      .catch(error => {
+        result = error;
+      });
+    return result;
+  }
+
+  async post(params: IRestParam): Promise<IOdooHttpResponse> {
+    const headers = await this.getHeaders();
+    const path = this.config.api + params.model;
+    const body = params.data || {};
+    let result: IOdooHttpResponse;
+    await this.http.post(path, body, headers)
       .then(v => {
         result = v;
       })
