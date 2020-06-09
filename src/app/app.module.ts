@@ -9,7 +9,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
-import { HTTP } from '@ionic-native/http/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { TabsService } from './_service/tabs.service';
 // environments
@@ -39,7 +38,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
   providers: [
     StatusBar,
     SplashScreen,
-    HTTP,
     Device,
     TabsService,
     AngularFireAuthGuard,

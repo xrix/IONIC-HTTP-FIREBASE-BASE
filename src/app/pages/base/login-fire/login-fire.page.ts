@@ -3,7 +3,6 @@ import { AuthFormComponent } from '../../components/auth-form/auth-form.componen
 import { AuthService } from 'src/app/_service/auth.service';
 import { Router } from '@angular/router';
 import { IFireUserCredential } from 'src/app/_interface/ifire-user-credential';
-import { User } from 'src/app/_model/model.user';
 
 @Component({
   selector: 'app-login-fire',

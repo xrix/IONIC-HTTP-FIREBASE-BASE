@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.macmour.Starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Mac AIO - Starter</name>
-    <description>An awesome app.</description>
-    <author email="aiksuwandra@gmail.com" href="http://macmour.com/">Mobile Team</author>
+<widget id="com.xrix.hrd" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>HRD</name>
+    <description>An awesome hrd app.</description>
+    <author email="aiksuwandra@gmail.com" href="http://xrix.com/">XRIX</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

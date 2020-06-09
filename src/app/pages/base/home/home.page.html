@@ -1,11 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>My Branding</ion-title>
+    <ion-title>Awesome HRD</ion-title>
     <ion-buttons slot="end">
-      <button ion-button color="light" (click)="reload()">Reload</button>
+      <!-- <button ion-button color="light" (click)="reload()">Reload</button> -->
       <ion-chip color="primary" routerLink='/tabs/home/profile'>
-        <ion-label color="medium">
-          <h3>User</h3>
+        <ion-label color="medium" *ngIf="fireUser">
+          <h3>{{fireUser.displayName || fireUser.email}}</h3>
         </ion-label>
         <ion-icon name="person"></ion-icon>
       </ion-chip>
@@ -19,20 +19,8 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <ion-list lines="true" *ngIf="odooUser">
-    <ion-item-divider> Odoo User </ion-item-divider>
-    <ion-item> 
-      <p><strong>Name: </strong>{{ odooUser.username }}</p>
-    </ion-item>
-    <ion-item> 
-      <p><strong>UID: </strong>{{ odooUser.uid }}</p>
-    </ion-item>
-    <ion-item> 
-      <p><strong>Lang: </strong>{{ odooUser.user_context.lang }}</p>
-    </ion-item>
-  </ion-list>
-  <ion-list lines="true" *ngIf="fireUser">
+  
+  <!-- <ion-list lines="true" *ngIf="fireUser">
     <ion-item-divider > Fire User </ion-item-divider>
     <ion-item > 
       <p><strong>Name: </strong>{{ fireUser.displayName }}</p>
@@ -49,7 +37,7 @@
     <ion-item> 
       <p><strong>Photo URL: </strong>{{ fireUser.photoURL }}</p>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 </ion-content>
 
 <ion-footer>

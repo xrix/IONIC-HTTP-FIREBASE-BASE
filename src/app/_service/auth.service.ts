@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
 import { first } from 'rxjs/operators';
-import { User } from '../_model/model.user';
+import { FireUser } from '../_model/model.fire.user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class AuthService {
   public userId: string;
   constructor(
     private afAuth: AngularFireAuth,
-    private user: User,
+    private user: FireUser,
     private firestore: AngularFirestore
   ) {}
 

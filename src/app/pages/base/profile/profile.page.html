@@ -13,29 +13,18 @@
     <img class="profile-image" src="../../../../assets/icon/logo.png" alt="{{currentUser?.username}}">
     <h2 class="profile-name">{{currentUser?.username}}</h2>
   </div>
-  <div *ngIf="partner" id='partner-info' text-wrap text-center>
+  <div *ngIf="uid" id='partner-info' text-wrap text-center>
     <ion-list no-lines>
       <ion-item>
           <ion-icon name="mail" color="primary" item-start></ion-icon>
-          <p *ngIf="partner?.email">{{partner?.email}}</p>
-          <a *ngIf="partner?.email" button slot="end" ion-button href="mailto:{{partner?.email}}" color="primary" item-end medium>Open App</a>
+          <p *ngIf="email">{{email}}</p>
+          <a *ngIf="email" button slot="end" ion-button href="mailto:{{email}}" color="primary" item-end medium>Open App</a>
       </ion-item>
       <ion-item>
           <ion-icon item-start name="call" color="danger"></ion-icon>
-          <p *ngIf="partner?.phone">{{partner?.phone}}</p>
-          <a *ngIf="partner?.phone" button slot="end" ion-button href="tel:{{partner?.phone}}" color="danger" item-end medium>Poke me</a>
-      </ion-item>
-      <ion-item>
-          <ion-icon item-start name="logo-whatsapp" color="secondary"></ion-icon>
-          <p *ngIf="partner?.mobile">{{partner?.mobile}}</p>
-          <a *ngIf="partner?.mobile" button slot="end" ion-button color="secondary" item-end medium href="whatsapp://send?text=Hi from ionic&phone=+{{partner?.phone}}&abid=+{{partner?.phone}}">Open App</a>
-      </ion-item>
-      <ion-item>
-          <ion-icon id="mapIcon" item-start name="home-outline" color="twitter"></ion-icon>
-          <div>
-            <span *ngIf="partner?.street">{{partner?.street}}</span>
-            <span *ngIf="partner?.street2">  {{partner?.street2}}</span>
-          </div>
+          <p *ngIf="phoneNumber">{{phoneNumber}}</p>
+          <a *ngIf="phoneNumber" button slot="end" ion-button href="tel:{{phoneNumber}}" color="danger" item-end medium>Poke me</a>
+          <a *ngIf="phoneNumber" button slot="end" ion-button color="secondary" item-end medium href="whatsapp://send?text=Hi from ionic&phone=+{{phoneNumber}}&abid=+{{phoneNumber}}">Open App</a>
       </ion-item>
     </ion-list>
     <!-- <ion-list>

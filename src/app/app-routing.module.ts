@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./pages/base/profile/profile.module').then( m => m.ProfilePageModule)
-  }
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/base/login-fire/login-fire.module').then(m => m.LoginFirePageModule)
+  },
 ];
 
 @NgModule({

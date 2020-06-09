@@ -1,12 +1,11 @@
-import { User } from 'src/app/_model/model.user';
 import { Router } from '@angular/router';
-import { OdooService } from 'src/app/_service/odoo.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TabsService } from './_service/tabs.service';
+import { FireUser } from './_model/model.fire.user';
 
 @Component({
   selector: 'app-root',
@@ -20,9 +19,8 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private tabs: TabsService,
     private menu: MenuController,
-    private odoo: OdooService,
     private router: Router,
-    private user: User
+    private user: FireUser
     ) {
     this.initializeApp();
   }
@@ -48,15 +46,13 @@ export class AppComponent implements OnInit {
     })
     .catch((e) => {
       console.log('not logged in, menu disabled', e);
-      this.router.navigateByUrl('/tabs/login', {replaceUrl: true});
+      this.router.navigateByUrl('/login', {replaceUrl: true});
     });
   }
 
   logout() {
-    this.odoo.logout()
-      .then(() => {
-        this.menu.enable(false);
-        this.router.navigateByUrl('/tabs/login', {replaceUrl: true});
-      });
+    this.user.logout();
+    this.menu.enable(false);
+    this.router.navigateByUrl('/login', {replaceUrl: true});
   }
 }

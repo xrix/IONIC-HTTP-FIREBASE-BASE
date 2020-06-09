@@ -1,34 +1,5 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-
-import { IOdooConfig } from 'src/app/_interface/iodoo-config';
-
-// The list of file replacements can be found in `angular.json`.
-export function getConfig(env: 'dev' | 'prod' | 'demo' | 'demo13') {
-  let server = '';
-  let db = '';
-  const ngrok = '81b527cb';
-  if (env === 'prod') {
-    server = 'http://167.99.67.203:8089';
-    db = '12ION';
-  } else if (env === 'demo') {
-    server = `https://${ngrok}.ngrok.io`;
-    db = '12ION';
-  } else if (env === 'demo13') {
-    server = 'http://192.168.43.156:8069';
-    db = 'x3hrd';
-  } else {
-    server = 'http://192.168.43.156:8069';
-    db = '12ION';
-  }
-
-  const api = server + '/api/';
-  const auth = api + 'auth/token';
-  const setdb = server + '/web?db=' + db;
-  const result: IOdooConfig = {server, api, auth, db, setdb};
-  return result;
-}
-
 export function getFireApi() {
   return {
     apiKey: 'AIzaSyBOkRcnk9wJxqqDlS1RuapGGwzaVs3ktB8',
@@ -46,18 +17,6 @@ export const environment = {
   get firebase() {
     return getFireApi();
   },
-  get odooDev() {
-    return getConfig('dev');
-  },
-  get odooProd() {
-    return getConfig('prod');
-  },
-  get odooDemo() {
-    return getConfig('demo');
-  },
-  get odooDemo13() {
-    return getConfig('demo13');
-  }
 };
 
 /*
