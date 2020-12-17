@@ -31,5 +31,5 @@ Using Ionic 5 and Angular.
      if not sure just let default or append `--prod` when run/build
      
 # configure Firebase
-* The server configuration can be found in folder *./src/environments/*
+* The server configurations can be found in folder *./src/environments/*
 
